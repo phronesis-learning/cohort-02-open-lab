@@ -1,0 +1,82 @@
+name: Cohort 02 PR Guardrails
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  repo-hygiene-guard:
+    name: Repo Hygiene Guard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for forbidden raw data, secrets, and oversized files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # 1. Fail if any file exists inside data/raw/
+          if [ -d "data/raw" ]; then
+            raw_files=$(find data/raw -type f)
+            if [ -n "$raw_files" ]; then
+              echo "::error::Forbidden files found in data/raw/! Never commit private raw datasets:"
+              echo "$raw_files"
+              exit 1
+            fi
+          fi
+
+          # 2. Fail if any .env file (excluding .env.example) is committed
+          env_files=$(find . -maxdepth 5 -path './.git' -prune -o -type f -name '.env*' ! -name '.env.example' -print)
+          if [ -n "$env_files" ]; then
+            echo "::error::Forbidden .env secret file(s) detected:"
+            echo "$env_files"
+            exit 1
+          fi
+
+          # 3. Fail if any single tracked/checked-out file exceeds 10 MB
+          large_files=$(find . -path './.git' -prune -o -type f -size +10M -print)
+          if [ -n "$large_files" ]; then
+            echo "::error::File(s) larger than 10 MB detected (avoid committing heavy binary weights):"
+            echo "$large_files"
+            exit 1
+          fi
+
+          echo "Repo hygiene checks passed."
+
+  python-syntax-and-tests:
+    name: Python Syntax & Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compile Python files and run pytest if present
+        shell: bash
+        run: |
+          set -euo pipefail
+          py_files=$(find tracks evals -type f -name '*.py' 2>/dev/null || true)
+
+          if [ -z "$py_files" ]; then
+            echo "No Python files found under tracks/ or evals/ yet — skipping syntax & pytest."
+            exit 0
+          fi
+
+          echo "Compiling Python files..."
+          python -m py_compile $py_files
+
+          test_files=$(find tracks evals -type f \( -name 'test_*.py' -o -name '*_test.py' \) 2>/dev/null || true)
+          if [ -n "$test_files" ]; then
+            echo "Running pytest..."
+            pip install --quiet pytest
+            pytest -q $test_files
+          else
+            echo "No pytest test files found yet — syntax check passed."
+          fi

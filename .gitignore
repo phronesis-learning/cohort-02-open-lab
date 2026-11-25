@@ -1,0 +1,32 @@
+# Private raw dataset snapshots (NEVER commit full datasets)
+data/raw/
+data/raw/*.csv
+data/raw/*.parquet
+
+# Secrets & environment variables
+.env
+.env.*
+!.env.example
+
+# Python environments & caches
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Heavy binary model weights & artifacts
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.onnx
+*.bin
+*.safetensors
+
+# OS & editor clutter
+.DS_Store
+Thumbs.db
+.vscode/

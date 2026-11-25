@@ -1,21 +1,38 @@
-# Dataset Information & Usage Policy
+# DrugShift × Phronesis Educational Snapshot — Schema & Data Policy
 
-Place the **DrugShift × Phronesis Educational Snapshot (`drugshift_edu_v1.csv`)** in this directory (or keep a small 200-row sample in `data/sample/` if the full snapshot is shared privately with Cohort 02 fellows).
+This repository uses a sanitized educational snapshot of Egyptian pharmaceutical pricing and shortage data (**DrugShift × Phronesis Educational Snapshot**).
 
-## Recommended Educational Schema
+## 1. Two-Tier Data Policy
 
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `drug_id` | string | Anonymized catalog identifier |
-| `trade_name_en` | string | Commercial product name (English) |
-| `trade_name_ar` | string | Commercial product name (Arabic, if available) |
-| `active_ingredient` | string | Generic active substance(s) |
-| `dosage_form` | string | Tablet, Syrup, Vial, Cream, etc. |
-| `manufacturer_type` | string | Local vs. Imported |
-| `old_price_egp` | float | Previous official price (EGP) |
-| `new_price_egp` | float | Updated official price (EGP) |
-| `price_updated_at` | date | Date of recorded price update |
+| Tier | Path | Visibility | Purpose |
+| :--- | :--- | :--- | :--- |
+| **Public Sample** | `data/sample/drugshift_sample_300.csv` | **Committed to GitHub** | 300-row stratified sample for quickstart, local development, and CI tests |
+| **Full Educational Snapshot** | `data/raw/drugshift_edu_v1.csv` | **Strictly Gitignored (Private)** | Distributed privately to enrolled Cohort 02 fellows only — **NEVER commit `data/raw/` to GitHub** |
 
-## Disclaimer
+> **Important:** Code in this repository is licensed under the [MIT License](../LICENSE), whereas the DrugShift educational dataset snapshot is provided **strictly for educational and non-commercial use** within Phronesis cohorts.
 
-This snapshot is curated strictly for **educational engineering, data science, and information retrieval research** within Phronesis cohorts. It must not be used for clinical decision-making, medical diagnosis, or prescribing.
+## 2. Sanitized Schema (17 Columns)
+
+| # | Column | Type | Description / Allowed Values |
+| :--- | :--- | :--- | :--- |
+| 1 | `drug_code` | string | Anonymized catalog identifier (e.g., `DRUG-00001`) |
+| 2 | `commercial_name_en` | string | Commercial product name (English) |
+| 3 | `commercial_name_ar` | string | Commercial product name (Arabic) |
+| 4 | `active_ingredients` | string | Generic active substance(s) |
+| 5 | `manufacturer` | string | Pharmaceutical manufacturer |
+| 6 | `dosage_form` | string | Dosage form (Tablet, Syrup, Vial, Cream, etc.) |
+| 7 | `units` | string / int | Package unit count / presentation |
+| 8 | `category` | enum | `prescription` \| `cosmetic` \| `supplement` \| `infant_formula` |
+| 9 | `imported` | enum | `local` \| `imported` |
+| 10 | `therapeutic_class` | string | Therapeutic classification |
+| 11 | `previous_price_egp` | float | Previous official price (EGP) |
+| 12 | `current_price_egp` | float | Current official price (EGP) |
+| 13 | `price_change_pct` | float | Percentage price change |
+| 14 | `price_updated_date` | date | UTC date of recorded price update (`YYYY-MM-DD`) |
+| 15 | `is_missing` | boolean | Whether the product is currently reported missing (`true` / `false`) |
+| 16 | `shortage_status` | string | Shortage status indicator |
+| 17 | `uses_ar` | string | Arabic informational usage summary |
+
+## 3. Non-Medical-Advice Disclaimer
+
+This dataset snapshot and all models/assistants built on top of it are curated strictly for **informational pricing, shortage analytics, and active-ingredient lookup only**. They must **never** be used for medical diagnosis, prescribing, dosage recommendations, or clinical decision-making.
