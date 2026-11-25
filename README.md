@@ -3,7 +3,7 @@
 [![Built at Phronesis](https://img.shields.io/badge/Built%20at-Phronesis-23453A?style=flat-square)](https://phronesis-tech.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-5F766D?style=flat-square)](LICENSE)
 
-Welcome to the official open-source engineering lab for **Phronesis Cohort 02 (Winter 2026)**. Instead of toy Kaggle notebooks, fellows collaborate via real GitHub Issues, feature branches, automated checks, and instructor-led Pull Request reviews using real Egyptian market datasets (such as the **DrugShift × Phronesis Educational Snapshot**).
+Welcome to the official open-source engineering lab for **Phronesis Cohort 02 (Winter 2026)**. Instead of toy Kaggle notebooks, fellows collaborate via real GitHub Issues, feature branches, automated checks, and instructor-led Pull Request reviews using real Egyptian market datasets (such as the **Egypt Pharma Pricing Open Dataset (EPPOD v1)**).
 
 ## Repository Structure
 

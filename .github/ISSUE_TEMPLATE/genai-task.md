@@ -11,7 +11,7 @@ assignees: ""
 
 ## Scope & Architecture
 - Components involved: <!-- Retriever / Reranker / Agent / MCP Server / Guardrails / Evaluator -->
-- Dataset / Knowledge Base: `DrugShift × Phronesis Educational Snapshot v1` (or specify)
+- Dataset / Knowledge Base: `Egypt Pharma Pricing Open Dataset (EPPOD v1)` (or specify)
 
 ## Acceptance Criteria
 - [ ] Clean modular code inside `tracks/generative-ai/<module>/`

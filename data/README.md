@@ -1,15 +1,15 @@
-# DrugShift × Phronesis Educational Snapshot — Schema & Data Policy
+# Egypt Pharma Pricing Open Dataset (EPPOD v1) — Schema & Data Policy
 
-This repository uses a sanitized educational snapshot of Egyptian pharmaceutical pricing and shortage data (**DrugShift × Phronesis Educational Snapshot**).
+This repository uses a sanitized educational snapshot of Egyptian pharmaceutical pricing and shortage data (**Egypt Pharma Pricing Open Dataset (EPPOD v1)**).
 
 ## 1. Two-Tier Data Policy
 
 | Tier | Path | Visibility | Purpose |
 | :--- | :--- | :--- | :--- |
-| **Public Sample** | `data/sample/drugshift_sample_300.csv` | **Committed to GitHub** | 300-row stratified sample for quickstart, local development, and CI tests |
-| **Full Educational Snapshot** | `data/raw/drugshift_edu_v1.csv` | **Strictly Gitignored (Private)** | Distributed privately to enrolled Cohort 02 fellows only — **NEVER commit `data/raw/` to GitHub** |
+| **Public Sample** | `data/sample/eppod_sample_300.csv` | **Committed to GitHub** | 300-row stratified sample for quickstart, local development, and CI tests |
+| **Full Educational Snapshot** | `data/raw/eppod_edu_v1.csv` | **Strictly Gitignored (Private)** | Distributed privately to enrolled Cohort 02 fellows only — **NEVER commit `data/raw/` to GitHub** |
 
-> **Important:** Code in this repository is licensed under the [MIT License](../LICENSE), whereas the DrugShift educational dataset snapshot is provided **strictly for educational and non-commercial use** within Phronesis cohorts.
+> **Important:** Code in this repository is licensed under the [MIT License](../LICENSE), whereas the Egypt Pharma Pricing Open Dataset (EPPOD v1) is provided **strictly for educational and non-commercial use** within Phronesis cohorts.
 
 ## 2. Sanitized Schema (17 Columns)
 

@@ -10,7 +10,7 @@ assignees: ""
 <!-- Clear engineering goal (e.g., EDA pipeline, feature engineering, baseline model, FastAPI endpoint). -->
 
 ## Dataset & Inputs
-- Dataset: `DrugShift × Phronesis Educational Snapshot v1` (or specify file in `data/`)
+- Dataset: `Egypt Pharma Pricing Open Dataset (EPPOD v1)` (or specify file in `data/`)
 - Target / Problem Type: <!-- Regression / Classification / Anomaly Detection / Ranking -->
 
 ## Acceptance Criteria

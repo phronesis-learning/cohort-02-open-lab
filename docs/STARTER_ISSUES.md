@@ -6,10 +6,10 @@ Copy these directly into your GitHub **Issues** tab to launch Weeks 4–6 of the
 
 ## Machine Learning Track (`track:ml`)
 
-### Issue #1: `[ML] Clean & Profile the DrugShift Egyptian Medicine Pricing Snapshot`
+### Issue #1: `[ML] Clean & Profile the Egypt Pharma Pricing Open Dataset (EPPOD v1)`
 - **Difficulty:** Starter (Week 4)
 - **Objective:** Build a reproducible EDA and data-cleaning script for the educational pharmaceutical pricing snapshot (handling missing active ingredients, Arabic/English naming inconsistencies, dosage extraction, and currency outliers).
-- **Deliverable:** `tracks/machine-learning/data_prep/clean_drugshift.py` + summary data-quality report + pytest checks.
+- **Deliverable:** `tracks/machine-learning/data_prep/clean_eppod.py` + summary data-quality report + pytest checks.
 
 ### Issue #2: `[ML] Price-Anomaly & Corrupted-Entry Detector`
 - **Difficulty:** Intermediate (Week 5)
@@ -35,7 +35,7 @@ Copy these directly into your GitHub **Issues** tab to launch Weeks 4–6 of the
 - **Objective:** Build a query normalization layer that maps Egyptian colloquial or misspelled Arabic/English medicine queries (e.g., `بنادول اكسترا` / `Panadol Extra`) to canonical catalog entries.
 - **Deliverable:** Normalization module + evaluation on 30 noisy Arabic/English test queries.
 
-### Issue #6: `[GenAI] Hybrid RAG Pipeline over the DrugShift Pricing Catalog`
+### Issue #6: `[GenAI] Hybrid RAG Pipeline over the EPPOD v1 Pricing Catalog`
 - **Difficulty:** Intermediate (Week 5)
 - **Objective:** Implement hybrid retrieval (BM25 + dense embeddings) with metadata filtering (active ingredient, dosage form, price range) that returns grounded answers with exact source row citations.
 - **Deliverable:** Indexing + retrieval pipeline + Recall@5 and Faithfulness metrics on 25 test queries.
